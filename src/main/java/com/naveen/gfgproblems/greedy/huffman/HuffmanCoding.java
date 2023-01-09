@@ -1,4 +1,4 @@
-package com.naveen.gfgproblems.huffman;
+package com.naveen.gfgproblems.greedy.huffman;
 
 import java.util.HashMap;
 import java.util.Map;
