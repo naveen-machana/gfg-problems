@@ -1,10 +1,10 @@
-package com.naveen.gfgproblems.backtracking;
+package com.naveen.gfgproblems.backtracking.kknightsonchessboard;
 
+// number of ways to place 2 black and white knights on chess board
 public class BlackAndWhiteKnightOnChessBoard {
     private static final int MOD = 1000000007;
 
-    static long numOfWays(int n, int m)
-    {
+    static long numOfWays(int n, int m) {
         int[][] grid = new int[n][m];
 
         int mn = (m * n) % MOD;
