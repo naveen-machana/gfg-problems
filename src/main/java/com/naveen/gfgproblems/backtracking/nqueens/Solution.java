@@ -1,9 +1,13 @@
 package com.naveen.gfgproblems.backtracking.nqueens;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 // https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1
 class Solution{
+    private static final int[][] FOUR_CORNERS_RELATIVE_POS = {{-1, -1}, {1, 1}, {-1, 1}, {1, -1}};
+
     ArrayList<ArrayList<Integer>> nQueen(int n) {
         boolean[][] grid = new boolean[n][n];
         Result result = new Result();
@@ -31,28 +35,25 @@ class Solution{
         for (int i = 0; i < n; i++) {
             if (grid[i][c]) return false;
 
-            int[] leftTopDiagonal = {r - i, c - i};
-            if (isValid(leftTopDiagonal, n) && isOccupied(grid, leftTopDiagonal)) return false;
+            for (int[] relativePos : FOUR_CORNERS_RELATIVE_POS) {
+                int x = r + relativePos[0] * i;
+                int y = c + relativePos[1] * i;
 
-            int[] rightBottomDiagonal = {r + i, c + i};
-            if (isValid(rightBottomDiagonal, n) && isOccupied(grid, rightBottomDiagonal)) return false;
-
-            int[] rightTopDiagonal = {r - i, c + i};
-            if (isValid(rightTopDiagonal, n) && isOccupied(grid, rightTopDiagonal)) return false;
-
-            int[] leftBottomDiagonal = {r + i, c - i};
-            if (isValid(leftBottomDiagonal, n) && isOccupied(grid, leftBottomDiagonal)) return false;
+                if (isValid(x, y, n) && isOccupied(grid, x, y)) {
+                    return false;
+                }
+            }
         }
 
         return true;
     }
 
-    boolean isValid(int[] pos, int n) {
-        return pos[0] >= 0 && pos[0] < n && pos[1] >= 0 && pos[1] < n;
+    boolean isValid(int r, int c, int n) {
+        return r >= 0 && r < n && c >= 0 && c < n;
     }
 
-    boolean isOccupied(boolean[][] grid, int[] pos) {
-        return grid[pos[0]][pos[1]];
+    boolean isOccupied(boolean[][] grid, int r, int c) {
+        return grid[r][c];
     }
 
     void addToResult(Result result, boolean[][] grid, int n) {
