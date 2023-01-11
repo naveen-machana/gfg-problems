@@ -5,7 +5,6 @@ public class BlackAndWhiteKnightOnChessBoard {
     private static final int MOD = 1000000007;
 
     static long numOfWays(int n, int m) {
-        int[][] grid = new int[n][m];
 
         int mn = (m * n) % MOD;
 
@@ -13,7 +12,6 @@ public class BlackAndWhiteKnightOnChessBoard {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                grid[i][j] = 1;
 
                 int count = 0;
                 for (int[] move : allowedMoves) {
@@ -23,8 +21,6 @@ public class BlackAndWhiteKnightOnChessBoard {
                         count++;
                     }
                 }
-
-                grid[i][j] = 0;
 
                 result.incrementBy(mn - count - 1);
             }
