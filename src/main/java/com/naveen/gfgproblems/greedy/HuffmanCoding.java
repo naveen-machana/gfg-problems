@@ -1,4 +1,4 @@
-package com.naveen.gfgproblems.greedy.huffman;
+package com.naveen.gfgproblems.greedy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,13 +7,12 @@ import java.util.PriorityQueue;
 public class HuffmanCoding {
     static String decodeHuffmanData(Node root, String binaryString)
     {
-        java.util.function.Function<Node, Boolean> isLeaf = node -> node.left == null && node.right == null;
         StringBuilder res = new StringBuilder();
         Node temp = root;
         char[] chars = binaryString.toCharArray();
         for (char c : chars) {
             temp = c == '0' ? temp.left : temp.right;
-            if (isLeaf.apply(temp)) {
+            if (isLeaf(temp)) {
                 res.append(temp.c);
                 temp = root;
             }
