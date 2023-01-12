@@ -1,5 +1,13 @@
 package com.naveen.gfgproblems.dp;
 
+// applications of lcs
+// 1. diff utility for version control system
+// 2. minimum insertion/deletion required to convert s1 into s2
+// 3. shortest common supersequence - shortest subsequence which has all chars of s1, s2
+// 4. longest palindromic subsequence of s1 - reverse s1, and find lcs of s1, reverse of s1
+// 5. longest repeating subsequence of s1 - lcs(s1, s1) with one change if (s1[m] == s2[n] && m != n) return 1 + lcs(s1, s2, m - 1, n - 1);
+// 6. space optimized lcs
+// 7. print lcs
 public class LongestCommonSubsequence {
     int lcs(char[] s1, char[] s2, int m, int n) {
         if (m == 0 || n == 0) return 0;
