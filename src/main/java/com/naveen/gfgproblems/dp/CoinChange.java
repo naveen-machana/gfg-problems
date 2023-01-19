@@ -2,6 +2,7 @@ package com.naveen.gfgproblems.dp;
 
 import java.util.Arrays;
 // we have infinite supply of coins
+// number of ways to make a sum of value with given coins
 public class CoinChange {
 
     private static class BacktrackingSolution {
