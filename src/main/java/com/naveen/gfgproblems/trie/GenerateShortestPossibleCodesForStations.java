@@ -7,11 +7,7 @@ import java.util.TreeMap;
 public class GenerateShortestPossibleCodesForStations {
     private static class Node {
         boolean isEndOfWord;
-        TreeMap<Character, Node> mp;
-        public Node() {
-            isEndOfWord = false;
-            mp = new TreeMap<>();
-        }
+        TreeMap<Character, Node> mp = new TreeMap<>();
     }
     public static void check(String cities[],int n)
     {
