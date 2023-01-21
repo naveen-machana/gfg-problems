@@ -24,4 +24,27 @@ public class AllocateMinimumNumberOfPages {
         for (int i = st; i < n; i++) sum += a[i];
         return sum;
     }
+
+    int allocatedp(int[] a, int n, int k) {
+        int[][] dp = new int[k + 1][n + 1];
+
+        for (int i = 0, sum = 0; i < n; i++) {
+            sum += a[i];
+            dp[1][i] = sum;
+        }
+
+        for (int i = 1; i <= k; i++) dp[i][1] = a[0];
+
+        for (int i = 2; i <= k; i++) {
+            for (int j = 2; j <= n; j++) {
+                dp[i][j] = Integer.MAX_VALUE;
+
+                for (int p = 1; p < j; p++) {
+                    dp[i][j] = Math.min(dp[i][j], Math.max(dp[i - 1][p], sum(a, p, j)));
+                }
+            }
+        }
+
+        return dp[k][n];
+    }
 }
