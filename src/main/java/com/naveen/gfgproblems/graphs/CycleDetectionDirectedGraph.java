@@ -3,10 +3,9 @@ package com.naveen.gfgproblems.graphs;
 import java.util.ArrayList;
 import java.util.List;
 
-// cycle detection in undirected graph
-// during the dfs traversal if we encounter a vertex, which has adjacent visited vertex and if this adjacent vertex
-// is not a parent of the vertex, then there exists a loop within graph
-public class CycleDetection {
+// cycle detection in a directed graph
+// if there is a back edge, then we say that there is cycle in graph
+public class CycleDetectionDirectedGraph {
     public static void main(String[] args) {
         List<List<Integer>> g = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -19,7 +18,7 @@ public class CycleDetection {
         addEdge(g, 2, 4);
         addEdge(g, 4, 5);
         addEdge(g, 3, 5);
-        System.out.println(isThereACycle(g, g.size()));
+        System.out.println(detectCycle(g, g.size()));
     }
 
     private static void addEdge(List<List<Integer>> g, int a, int b) {
@@ -27,32 +26,31 @@ public class CycleDetection {
         g.get(b).add(a);
     }
 
-    private static boolean isThereACycle(List<List<Integer>> g, int n) {
+    private static boolean detectCycle(List<List<Integer>> g, int n) {
         boolean[] visited = new boolean[n];
+        boolean[] recSt = new boolean[n];
 
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                boolean isCycle = dfs(g, visited, i, -1);
-                if (isCycle) return true;
+                boolean res = isThereACycle(g, i, visited, recSt);
+                if (res) return true;
             }
         }
 
         return false;
     }
 
-    private static boolean dfs(List<List<Integer>> g, boolean[] visited, int v, int p) {
+    private static boolean isThereACycle(List<List<Integer>> g, int v, boolean[] visited, boolean[] recSt) {
         visited[v] = true;
+        recSt[v] = true;
 
         for (Integer next : g.get(v)) {
-            if (!visited[next]) {
-                boolean res = dfs(g, visited, next, v);
-                if (res) return true;
-            }
-            else if (next != p) {
+            if (!visited[next] && isThereACycle(g, next, visited, recSt))
                 return true;
-            }
+            else if (recSt[next])
+                return true;
         }
-
+        recSt[v] = false;
         return false;
     }
 }
