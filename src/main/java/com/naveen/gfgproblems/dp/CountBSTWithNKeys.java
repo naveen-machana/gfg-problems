@@ -11,7 +11,7 @@ package com.naveen.gfgproblems.dp;
 public class CountBSTWithNKeys {
 
     int count(int n) {
-        if (n <= 2) return n;
+        if (n <= 1) return 1;
         int res = 0;
         for (int i = 1; i <= n; i++) {
             res += count(i - 1) * count(n - i);
@@ -23,7 +23,7 @@ public class CountBSTWithNKeys {
         if (n <= 1) return 1;
 
         int[] dp = new int[n + 1];
-        dp[1] = 1; dp[2] = 2;
+        dp[0] = 1; dp[1] = 1; dp[2] = 2;
 
         for (int i = 3; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
