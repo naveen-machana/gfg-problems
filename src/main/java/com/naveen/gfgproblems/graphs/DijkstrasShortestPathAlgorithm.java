@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
-// Dijkstras shortest path algorithm in a weighted undirected connecte graph from source
+// Dijkstras shortest path algorithm in a weighted undirected connected graph from source
 // similar to Prims algorithm
 public class DijkstrasShortestPathAlgorithm {
 
