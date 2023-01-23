@@ -6,6 +6,9 @@ import java.util.PriorityQueue;
 
 // Dijkstras shortest path algorithm in a weighted undirected connected graph from source
 // similar to Prims algorithm
+// 1. This algorithm does not work for negative weights
+// 2. Suppose if every edge weight has been increased by fixed value, does the shortest path change from source?
+//    Yes. need to recalculate shortest path again.
 public class DijkstrasShortestPathAlgorithm {
 
     int[] shortestPathFromSource(List<List<List<Integer>>> g, int n, int source) {
