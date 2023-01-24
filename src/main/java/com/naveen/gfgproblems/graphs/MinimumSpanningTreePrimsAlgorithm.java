@@ -6,6 +6,7 @@ import java.util.PriorityQueue;
 // Given a weighted undirected connected graph, find MST
 // every vertex should be connected in such a way that their combined weight for connections should be minimum
 // every vertex should be connected to other vertex may be through some intermediate vertex
+// starting point. It doesn’t matter which one because MST is unique and no matter where you start, you are going to end up with the same tree.
 public class MinimumSpanningTreePrimsAlgorithm {
 
     public int minimumSpanningTree(List<List<List<Integer>>> g, int n) {
