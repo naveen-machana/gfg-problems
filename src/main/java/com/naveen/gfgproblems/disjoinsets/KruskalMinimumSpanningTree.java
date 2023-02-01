@@ -19,6 +19,7 @@ public class KruskalMinimumSpanningTree {
         UnionFind ds = new UnionFind(n);
 
         int res = 0;
+        // NOTE: also make sure if the number of connected vertices added are lessthan or equals to n
         while (!pq.isEmpty()) {
             Edge e = pq.poll();
             if (ds.areConnected(e.src, e.des)) continue;
